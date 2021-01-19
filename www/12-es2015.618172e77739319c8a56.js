@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[12],{cTxv:function(n,o,r){"use strict";r.r(o),r.d(o,"GroupsModule",(function(){return s}));var t=r("ofXK"),e=r("KlPC"),u=r("PCNd"),c=r("fXoL");let s=(()=>{class n{}return n.\u0275mod=c.Fb({type:n}),n.\u0275inj=c.Eb({factory:function(o){return new(o||n)},imports:[[t.b,e.a,u.a]]}),n})()}}]);
