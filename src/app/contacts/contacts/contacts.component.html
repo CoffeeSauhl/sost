@@ -1,0 +1,28 @@
+<!-- <p>
+  contacts works!
+</p>
+
+<ion-button routerLink="/contacts/dashboard">Dashboard</ion-button>
+<ion-button routerLink="/contacts/search">search</ion-button>
+
+<router-outlet></router-outlet> -->
+
+
+
+
+<ion-tabs>
+  <ion-tab-bar slat="bottom">
+    <ion-tab-button tab="dashboard">
+      <ion-icon name="home"></ion-icon>
+      <ion-label>Dashboard</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="search">
+      <ion-icon name="calendar"></ion-icon>
+      <ion-label>Search</ion-label>
+    </ion-tab-button>
+    <ion-tab-button ngClick="disconnect()">
+      <ion-icon name="log-out"></ion-icon>
+      <ion-label>Disconnect</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

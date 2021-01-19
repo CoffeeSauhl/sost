@@ -1,0 +1,59 @@
+<ion-content class="ion-padding">
+
+  <form [formGroup]="signupForm" (ngSubmit)="register()">
+
+    <ion-item *ngIf="!!error">
+      <ion-text color="danger">{{error}}</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>E-mail</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+      <ion-text *ngIf="signupForm.controls.email.hasError('email')">
+        Doit contenir un E-mail.
+      </ion-text>
+    </ion-item>  
+
+    <ion-item>
+      <ion-label>Username</ion-label>
+      <ion-input formControlName="username"></ion-input>
+      <ion-text *ngIf="signupForm.controls.username.hasError('minlength')">
+        Le nom d'utilisateur saisie est trop court
+      </ion-text>
+      <ion-text *ngIf="signupForm.controls.username.hasError('maxlength')">
+        Le nom d'utilisateur saisie est trop long
+      </ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+      <ion-text *ngIf="signupForm.controls.password.hasError('minlength')">
+        Le mot de passe saisit est trop court
+      </ion-text>
+      <ion-text *ngIf="signupForm.controls.password.hasError('maxlength')">
+        Le mot de passe saisit est trop long
+      </ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Password confirm</ion-label>
+      <ion-input type="password" formControlName="passwordConf"></ion-input>
+      <ion-text color="danger" *ngIf="">
+        Passwords mismatch !
+      </ion-text>
+    
+    </ion-item>
+
+    <div *ngIf="!loaderService.getRegister()">
+      <ion-button type="submit" [disabled]="!signupForm.valid" color="primary">Submit</ion-button>
+    </div>
+    <div *ngIf="loaderService.getRegister()">
+      <ion-spinner name="crescent"></ion-spinner>
+    </div>
+
+  </form>
+
+  <ion-button routerLink="/auth/home">Home</ion-button>
+
+</ion-content>

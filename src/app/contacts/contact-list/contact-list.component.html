@@ -1,0 +1,37 @@
+<h1>
+  {{ title }}
+</h1>
+
+
+<h1>Type-in invitation</h1>
+
+<form [formGroup]=inviteForm (ngSubmit)="invite()">
+  <ion-item>
+    <ion-label>E-mail :</ion-label>
+    <ion-input type="email" formControlName="email"></ion-input>
+  </ion-item>
+
+  <ion-button type="submit" [disabled]="!inviteForm.valid" color="primary">Submit</ion-button>
+</form>
+
+ <ion-button color="danger" (click)="disconnect()">disconnect</ion-button>
+ 
+<ul>
+  <li *ngFor="let student of students, let i=index">
+
+    <span *ngIf="student.validated else myTemp" style="color:green">
+      {{ student.name }} 
+    </span>
+
+    <ng-template #myTemp>
+      <span style="color:red">
+        {{ student.name }} 
+        <ion-button color="success" (click)="validate(student)">O</ion-button> 
+      </span>
+    </ng-template>
+
+    <ion-button color="danger" (click)="suppress(i)">X</ion-button>
+   
+    
+  </li>
+</ul>

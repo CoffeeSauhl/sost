@@ -1,0 +1,55 @@
+<ion-content class="ion-padding">
+
+    <h1>Main Content</h1>
+
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+      <ion-item *ngIf="error != null">
+        <ion-text color="danger">
+          <ng-container [ngSwitch]="error.status">
+            <span *ngSwitchCase="404">Credentials not found</span>
+            <span *ngSwitchDefault>An error occured</span>
+          </ng-container>
+        </ion-text>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>E-mail</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>    
+        <ion-text *ngIf="loginForm.controls.email.hasError('email')">
+          Doit contenir un E-mail.
+        </ion-text>
+      
+
+      <ion-item>
+        <ion-label>Password</ion-label>
+        <ion-input type="password" formControlName="password" ></ion-input>
+      </ion-item>    
+        <ion-text color="danger" *ngIf="loginForm.controls.password.hasError('minlength')">
+          Le mot de passe saisit est trop court
+        </ion-text>
+        <ion-text *ngIf="loginForm.controls.password.hasError('maxlength')">
+          Le mot de passe saisit est trop long
+        </ion-text>
+      
+
+        
+        <!-- <button type="submit" class="hidden" [disabled]="!loginForm.valid" color="primary">Submit</button> -->
+        <div *ngIf="!loaderService.getLogin()">
+          <ion-button type="submit" [disabled]="!loginForm.valid" color="primary">Submit</ion-button>
+        </div>
+        <div *ngIf="loaderService.getLogin()">
+          <ion-spinner name="crescent"></ion-spinner>
+        </div>
+
+
+    </form>
+
+    <ion-button routerLink="/auth/home">Home</ion-button>
+
+  </ion-content>
+
+
+  
+
